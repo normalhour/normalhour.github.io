@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 NORMALHOUR - Абсолютный Хакер 🔥</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><text y="15" font-size="15">💀</text></svg>'), auto;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            overflow-x: hidden;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff0000);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .glitch-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,255,0,0.1) 0px, transparent 2px);
+            pointer-events: none;
+            z-index: 2;
+            animation: glitchScan 8s linear infinite;
+        }
+
+        @keyframes glitchScan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 3;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin: 20px 0;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(-5deg); }
+            75% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .title {
+            font-size: 5em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(255,255,255,0.8);
+            animation: textGlitch 0.5s infinite, rainbow 2s linear infinite;
+            filter: drop-shadow(0 0 10px #ff00ff) drop-shadow(0 0 20px #00ffff);
+        }
+
+        @keyframes textGlitch {
+            0% { transform: skew(0deg); }
+            20% { transform: skew(-2deg); }
+            40% { transform: skew(2deg); }
+            60% { transform: skew(-1deg); }
+            80% { transform: skew(1deg); }
+            100% { transform: skew(0deg); }
+        }
+
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg) drop-shadow(0 0 10px #ff00ff); }
+            100% { filter: hue-rotate(360deg) drop-shadow(0 0 10px #00ffff); }
+        }
+
+        .subtitle {
+            font-size: 2em;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+            animation: blink 0.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0.3; }
+        }
+
+        .hacker-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .hacker-box {
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 5px solid #00ff00;
+            border-radius: 20px;
+            box-shadow: 0 0 30px #00ff00, 0 0 60px #ff00ff, inset 0 0 30px rgba(0,255,0,0.3);
+            animation: pulse 2s infinite, rotate3d 10s infinite linear;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px #00ff00; }
+            50% { transform: scale(1.05); box-shadow: 0 0 60px #ff00ff, 0 0 90px #00ffff; }
+        }
+
+        @keyframes rotate3d {
+            0% { transform: perspective(1000px) rotateY(0deg); }
+            100% { transform: perspective(1000px) rotateY(360deg); }
+        }
+
+        .hacker-ascii {
+            font-family: monospace;
+            color: #00ff00;
+            font-size: 8px;
+            line-height: 8px;
+            white-space: pre;
+            text-align: center;
+            padding: 20px;
+            animation: colorShift 3s infinite;
+        }
+
+        @keyframes colorShift {
+            0% { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
+            33% { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+            66% { color: #00ffff; text-shadow: 0 0 10px #00ffff; }
+            100% { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
+        }
+
+        .russian-quotes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        .quote {
+            position: absolute;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ffff00, 0 0 20px #ff00ff;
+            animation: float 5s infinite ease-in-out;
+            white-space: nowrap;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .info-section {
+            background: rgba(0, 0, 0, 0.7);
+            border: 3px solid #ff00ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 800px;
+            box-shadow: 0 0 40px #ff00ff, 0 0 80px #00ffff;
+            animation: wiggle 3s infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(1deg); }
+            75% { transform: rotate(-1deg); }
+        }
+
+        .info-text {
+            color: #ffff00;
+            font-size: 1.5em;
+            text-align: center;
+            text-shadow: 0 0 5px #ffff00;
+            animation: textWave 2s infinite;
+        }
+
+        @keyframes textWave {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(1.1); }
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .meme-button {
+            padding: 20px 40px;
+            font-size: 1.5em;
+            font-weight: bold;
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #ff0000, #ff00ff, #0000ff);
+            color: white;
+            text-shadow: 0 0 10px #000;
+            box-shadow: 0 0 20px #ff00ff;
+            animation: buttonPulse 1s infinite;
+            transition: all 0.3s;
+        }
+
+        .meme-button:hover {
+            transform: scale(1.2) rotate(5deg);
+            box-shadow: 0 0 40px #00ffff, 0 0 80px #ff00ff;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .sparkles {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: sparkle 1s forwards;
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: scale(3) rotate(360deg); opacity: 0; }
+        }
+
+        .emoji-rain {
+            position: fixed;
+            font-size: 2em;
+            pointer-events: none;
+            z-index: 5;
+            animation: fall 3s linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        .terminal {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            box-shadow: 0 0 30px #00ff00;
+        }
+
+        .terminal-line {
+            margin: 5px 0;
+            animation: typewriter 2s steps(40) infinite;
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .warning {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 0, 0.9);
+            border: 5px solid #ffff00;
+            padding: 30px;
+            font-size: 2em;
+            color: #ffff00;
+            text-align: center;
+            z-index: 10;
+            display: none;
+            animation: shake 0.5s infinite;
+            box-shadow: 0 0 50px #ff0000;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            25% { transform: translate(-48%, -50%) rotate(2deg); }
+            75% { transform: translate(-52%, -50%) rotate(-2deg); }
+        }
+
+        .fire-effect {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to top, rgba(255,0,0,0.5), transparent);
+            pointer-events: none;
+            z-index: 6;
+            animation: fireFlicker 0.3s infinite;
+        }
+
+        @keyframes fireFlicker {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrix"></canvas>
+    <div class="glitch-overlay"></div>
+    <div class="fire-effect"></div>
+    <div class="russian-quotes" id="quotes"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🔥💀 NORMALHOUR 💀🔥</h1>
+            <p class="subtitle">⚡ ЛЕГЕНДАРНЫЙ ХАКЕР ⚡</p>
+        </div>
+
+        <div class="hacker-container">
+            <div class="hacker-box">
+                <pre class="hacker-ascii" id="hacker">
+    _______________
+   /               \
+  /  O           O  \
+ |        ___        |
+ |       /   \       |
+  \     \_____/     /
+   \_______________/
+        |     |
+    ____|_____|____
+   /               \
+  /  NORMALHOUR     \
+ /___________________\
+        |     |
+        |     |
+       /       \
+      /         \
+     /           \
+    /_____________\
+   
+   [HACKING...]
+   [ACCESS: GRANTED]
+   [MEME LEVEL: 9999]
+                </pre>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <p class="info-text">
+                🚨 ВЫ ВОШЛИ В ЗОНУ АБСОЛЮТНОГО ХАОСА 🚨<br>
+                👾 NORMALHOUR - МАСТЕР МЕМОВ 👾<br>
+                🔥 ЛЕГЕНДА ИНТЕРНЕТА 🔥
+            </p>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal-line">> Инициализация системы...</div>
+            <div class="terminal-line">> Загрузка мемов... [████████] 100%</div>
+            <div class="terminal-line">> Статус: АБСОЛЮТНЫЙ ХАОС</div>
+            <div class="terminal-line">> Уровень троллинга: МАКСИМАЛЬНЫЙ</div>
+            <div class="terminal-line">> Добро пожаловать в матрицу мемов...</div>
+        </div>
+
+        <div class="button-container">
+            <button class="meme-button" onclick="triggerChaos()">💥 ХАОС 💥</button>
+            <button class="meme-button" onclick="hackTheMatrix()">🔓 ВЗЛОМ 🔓</button>
+            <button class="meme-button" onclick="memeExplosion()">🎭 МЕМЫ 🎭</button>
+        </div>
+
+        <div class="info-section">
+            <p class="info-text">
+                ⚠️ ВНИМАНИЕ ⚠️<br>
+                Эта страница содержит 9999% мемов<br>
+                Продолжайте на свой страх и риск<br>
+                🇷🇺 СДЕЛАНО В РОССИИ 🇷🇺
+            </p>
+        </div>
+    </div>
+
+    <div class="warning" id="warning">
+        ⚠️ СИСТЕМА ВЗЛОМАНА ⚠️<br>
+        NORMALHOUR БЫЛ ЗДЕСЬ
+    </div>
+
+    <script>
+        const russianQuotes = [
+            "В РОССИИ МЕМЫ ДЕЛАЮТ ТЕБЯ",
+            "НОРМАЛЬНЫЙ ЧАС НАСТУПИЛ",
+            "ХАКЕР ЛЕГЕНДА",
+            "АБСОЛЮТНЫЙ БЕЗУМЕЦ",
+            "МАСТЕР ХАОСА",
+            "КОРОЛЬ ИНТЕРНЕТА",
+            "ЛЕГЕНДА МЕМОВ",
+            "ВЗЛОМ РЕАЛЬНОСТИ",
+            "МАТРИЦА ПОБЕЖДЕНА",
+            "ТРОЛЛИНГ УРОВЕНЬ 9999",
+            "РУССКИЙ ХАКЕР",
+            "НОРМАЛЬНЫЙ ЧАС = ХАОС",
+            "ДОБРО ПОЖАЛОВАТЬ В АД",
+            "МЕМЫ ПОВСЮДУ",
+            "СИСТЕМА СЛОМАНА"
+        ];
+
+        const emojis = ['💀', '🔥', '⚡', '💥', '👾', '🎭', '🚨', '⚠️', '💣', '🌟', '✨', '🎪', '🎯', '🎲'];
+
+        // Matrix effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789@#$%^&*()';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#0f0';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 33);
+
+        // Floating Russian quotes
+        function createQuote() {
+            const quote = document.createElement('div');
+            quote.className = 'quote';
+            quote.textContent = russianQuotes[Math.floor(Math.random() * russianQuotes.length)];
+            quote.style.left = Math.random() * 80 + '%';
+            quote.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            document.getElementById('quotes').appendChild(quote);
+            setTimeout(() => quote.remove(), 7000);
+        }
+        setInterval(createQuote, 1500);
+
+        // Sparkle effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.8) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkles';
+                sparkle.style.left = e.pageX + 'px';
+                sparkle.style.top = e.pageY + 'px';
+                sparkle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
+
+        // Hacker animation
+        const hackerTexts = [
+            `
+    _______________
+   /               \\
+  /  O           O  \\
+ |        ___        |
+ |       /   \\       |
+  \\     \\_____/     /
+   \\_______________/
+        |     |
+    ____|_____|____
+   /               \\
+  /  NORMALHOUR     \\
+ /___________________\\
+        |     |
+        |     |
+       /       \\
+      /         \\
+     /           \\
+    /_____________\\
+   
+   [HACKING...]
+   [ACCESS: GRANTED]
+   [MEME LEVEL: 9999]
+            `,
+            `
+    _______________
+   /               \\
+  /  X           X  \\
+ |        ___        |
+ |       /   \\       |
+  \\     \\_____/     /
+   \\_______________/
+        |     |
+    ____|_____|____
+   /               \\
+  /  ВЗЛОМ ИДЁТ    \\
+ /___________________\\
+        |     |
+        |     |
+       /       \\
+      /         \\
+     /           \\
+    /_____________\\
+   
+   [LOADING...]
+   [CHAOS MODE: ON]
+   [TROLL LEVEL: MAX]
+            `
+        ];
+
+        let hackerIndex = 0;
+        setInterval(() => {
+            hackerIndex = (hackerIndex + 1) % hackerTexts.length;
+            document.getElementById('hacker').textContent = hackerTexts[hackerIndex];
+        }, 2000);
+
+        // Button functions
+        function triggerChaos() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.className = 'emoji-rain';
+                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    emoji.style.left = Math.random() * 100 + '%';
+                    emoji.style.top = '-50px';
+                    document.body.appendChild(emoji);
+                    setTimeout(() => emoji.remove(), 3000);
+                }, i * 50);
+            }
+            document.body.style.animation = 'shake 0.5s infinite';
+            setTimeout(() => document.body.style.animation = '', 2000);
+        }
+
+        function hackTheMatrix() {
+            const warning = document.getElementById('warning');
+            warning.style.display = 'block';
+            setTimeout(() => warning.style.display = 'none', 3000);
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => createQuote(), i * 100);
+            }
+        }
+
+        function memeExplosion() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            let colorIndex = 0;
+            const interval = setInterval(() => {
+                document.body.style.background = colors[colorIndex];
+                colorIndex = (colorIndex + 1) % colors.length;
+            }, 100);
+            setTimeout(() => {
+                clearInterval(interval);
+                document.body.style.background = 'linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff0000)';
+                document.body.style.backgroundSize = '400% 400%';
+                document.body.style.animation = 'gradientShift 3s ease infinite';
+            }, 3000);
+        }
+
+        // Random chaos effects
+        setInterval(() => {
+            if (Math.random() > 0.95) {
+                document.body.style.transform = `rotate(${Math.random() * 4 - 2}deg)`;
+                setTimeout(() => document.body.style.transform = '', 200);
+            }
+        }, 1000);
+
+        // Auto-trigger effects
+        setTimeout(() => triggerChaos(), 2000);
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                const emoji = document.createElement('div');
+                emoji.className = 'emoji-rain';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + '%';
+                emoji.style.top = '-50px';
+                document.body.appendChild(emoji);
+                setTimeout(() => emoji.remove(), 3000);
+            }
+        }, 500);
+
+        // Resize canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
