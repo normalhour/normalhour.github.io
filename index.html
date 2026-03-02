@@ -19,6 +19,28 @@
             height: 100vh;
             width: 100vw;
             position: relative;
+            animation: screenShake 0.1s infinite, colorFlash 0.3s infinite;
+        }
+
+        @keyframes screenShake {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            10% { transform: translate(-2px, 2px) rotate(0.5deg); }
+            20% { transform: translate(2px, -2px) rotate(-0.5deg); }
+            30% { transform: translate(-2px, -2px) rotate(0.5deg); }
+            40% { transform: translate(2px, 2px) rotate(-0.5deg); }
+            50% { transform: translate(-2px, 2px) rotate(0.5deg); }
+            60% { transform: translate(2px, -2px) rotate(-0.5deg); }
+            70% { transform: translate(-2px, -2px) rotate(0.5deg); }
+            80% { transform: translate(2px, 2px) rotate(-0.5deg); }
+            90% { transform: translate(-2px, 2px) rotate(0.5deg); }
+        }
+
+        @keyframes colorFlash {
+            0% { filter: hue-rotate(0deg) brightness(1); }
+            25% { filter: hue-rotate(90deg) brightness(1.2); }
+            50% { filter: hue-rotate(180deg) brightness(1); }
+            75% { filter: hue-rotate(270deg) brightness(1.2); }
+            100% { filter: hue-rotate(360deg) brightness(1); }
         }
 
         .matrix-bg {
@@ -29,7 +51,13 @@
             height: 100%;
             z-index: 1;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.8;
+            animation: matrixPulse 0.5s infinite;
+        }
+
+        @keyframes matrixPulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
         }
 
         .glitch-overlay {
@@ -38,15 +66,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(0deg, rgba(0,255,0,0.1) 0px, transparent 2px);
+            background: repeating-linear-gradient(0deg, rgba(0,255,0,0.2) 0px, transparent 2px);
             pointer-events: none;
             z-index: 2;
-            animation: glitchScan 8s linear infinite;
+            animation: glitchScan 2s linear infinite, glitchFlash 0.2s infinite;
         }
 
         @keyframes glitchScan {
             0% { transform: translateY(0); }
             100% { transform: translateY(100%); }
+        }
+
+        @keyframes glitchFlash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         .container {
@@ -64,33 +97,49 @@
             text-align: center;
             position: absolute;
             top: 5%;
-            animation: glitchTitle 2s infinite;
+            animation: glitchTitle 0.1s infinite, headerPulse 0.5s infinite;
         }
 
         @keyframes glitchTitle {
-            0%, 90%, 100% { transform: translate(0); }
-            92% { transform: translate(-2px, 2px); }
-            94% { transform: translate(2px, -2px); }
-            96% { transform: translate(-2px, -2px); }
-            98% { transform: translate(2px, 2px); }
+            0% { transform: translate(0, 0) scale(1); }
+            20% { transform: translate(-5px, 5px) scale(1.02); }
+            40% { transform: translate(5px, -5px) scale(0.98); }
+            60% { transform: translate(-5px, -5px) scale(1.02); }
+            80% { transform: translate(5px, 5px) scale(0.98); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        @keyframes headerPulse {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(2); }
         }
 
         .title {
             font-size: 4em;
             font-weight: bold;
             color: #0f0;
-            text-shadow: 0 0 20px #0f0, 0 0 40px #0f0, 0 0 60px #0f0;
-            animation: textGlitch 0.5s infinite;
+            text-shadow: 0 0 20px #0f0, 0 0 40px #0f0, 0 0 60px #0f0, 0 0 80px #f00, 0 0 100px #0ff;
+            animation: textGlitch 0.05s infinite, titleExplode 0.3s infinite;
             letter-spacing: 5px;
         }
 
+        @keyframes titleExplode {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 20px #0f0, 0 0 40px #0f0, 0 0 60px #0f0; }
+            50% { transform: scale(1.1); text-shadow: 0 0 40px #f00, 0 0 80px #f00, 0 0 120px #0ff; }
+        }
+
         @keyframes textGlitch {
-            0% { transform: skew(0deg); }
-            20% { transform: skew(-2deg); }
-            40% { transform: skew(2deg); }
-            60% { transform: skew(-1deg); }
-            80% { transform: skew(1deg); }
-            100% { transform: skew(0deg); }
+            0% { transform: skew(0deg); opacity: 1; }
+            10% { transform: skew(-5deg); opacity: 0.8; }
+            20% { transform: skew(5deg); opacity: 1; }
+            30% { transform: skew(-5deg); opacity: 0.8; }
+            40% { transform: skew(5deg); opacity: 1; }
+            50% { transform: skew(-5deg); opacity: 0.8; }
+            60% { transform: skew(5deg); opacity: 1; }
+            70% { transform: skew(-5deg); opacity: 0.8; }
+            80% { transform: skew(5deg); opacity: 1; }
+            90% { transform: skew(-5deg); opacity: 0.8; }
+            100% { transform: skew(0deg); opacity: 1; }
         }
 
         @keyframes rainbow {
@@ -101,14 +150,21 @@
         .subtitle {
             font-size: 1.5em;
             color: #0ff;
-            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-            animation: blink 0.5s infinite;
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #f00;
+            animation: blink 0.1s infinite, subtitleAttack 0.2s infinite;
             letter-spacing: 3px;
         }
 
+        @keyframes subtitleAttack {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
         @keyframes blink {
-            0%, 49% { opacity: 1; }
-            50%, 100% { opacity: 0.3; }
+            0%, 40% { opacity: 1; }
+            50%, 90% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         .hacker-container {
@@ -124,14 +180,29 @@
             background: rgba(0, 20, 0, 0.9);
             border: 3px solid #0f0;
             box-shadow: 0 0 40px #0f0, 0 0 80px #0f0, inset 0 0 40px rgba(0,255,0,0.2);
-            animation: pulse 2s infinite;
+            animation: pulse 0.3s infinite, boxSpin 2s infinite linear, boxAttack 0.5s infinite;
             position: relative;
             overflow: hidden;
         }
 
+        @keyframes boxSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes boxAttack {
+            0%, 100% { border-color: #0f0; }
+            25% { border-color: #f00; }
+            50% { border-color: #0ff; }
+            75% { border-color: #ff0; }
+        }
+
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 40px #0f0, 0 0 80px #0f0; }
-            50% { box-shadow: 0 0 60px #0ff, 0 0 120px #0ff; }
+            0% { box-shadow: 0 0 40px #0f0, 0 0 80px #0f0; transform: scale(1); }
+            25% { box-shadow: 0 0 60px #f00, 0 0 120px #f00; transform: scale(1.1); }
+            50% { box-shadow: 0 0 60px #0ff, 0 0 120px #0ff; transform: scale(1); }
+            75% { box-shadow: 0 0 60px #ff0, 0 0 120px #ff0; transform: scale(1.1); }
+            100% { box-shadow: 0 0 40px #0f0, 0 0 80px #0f0; transform: scale(1); }
         }
 
         .hacker-ascii {
@@ -143,12 +214,22 @@
             text-align: center;
             padding: 20px;
             text-shadow: 0 0 10px #0f0;
-            animation: colorShift 3s infinite;
+            animation: colorShift 0.2s infinite, asciiShake 0.1s infinite;
         }
 
         @keyframes colorShift {
-            0%, 100% { color: #0f0; text-shadow: 0 0 10px #0f0; }
-            50% { color: #0ff; text-shadow: 0 0 10px #0ff; }
+            0% { color: #0f0; text-shadow: 0 0 20px #0f0; }
+            25% { color: #f00; text-shadow: 0 0 20px #f00; }
+            50% { color: #0ff; text-shadow: 0 0 20px #0ff; }
+            75% { color: #ff0; text-shadow: 0 0 20px #ff0; }
+            100% { color: #0f0; text-shadow: 0 0 20px #0f0; }
+        }
+
+        @keyframes asciiShake {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-2px, 2px); }
+            50% { transform: translate(2px, -2px); }
+            75% { transform: translate(-2px, -2px); }
         }
 
         .russian-quotes {
@@ -163,20 +244,26 @@
 
         .quote {
             position: absolute;
-            font-size: 1.2em;
+            font-size: 1.5em;
             font-weight: bold;
             color: #f00;
-            text-shadow: 0 0 10px #f00, 0 0 20px #f00;
-            animation: float 5s infinite ease-in-out;
+            text-shadow: 0 0 20px #f00, 0 0 40px #f00, 0 0 60px #0f0;
+            animation: float 3s infinite ease-in-out, quoteFlash 0.2s infinite;
             white-space: nowrap;
             font-family: monospace;
         }
 
+        @keyframes quoteFlash {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+
         @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            0% { transform: translateY(100vh) rotate(0deg) scale(1); opacity: 0; }
             10% { opacity: 1; }
+            50% { transform: translateY(50vh) rotate(180deg) scale(1.5); opacity: 1; }
             90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+            100% { transform: translateY(-100vh) rotate(360deg) scale(1); opacity: 0; }
         }
 
         .info-section {
@@ -186,14 +273,28 @@
             position: absolute;
             bottom: 10%;
             box-shadow: 0 0 30px #0f0;
+            animation: infoAttack 0.3s infinite;
+        }
+
+        @keyframes infoAttack {
+            0%, 100% { border-color: #0f0; box-shadow: 0 0 30px #0f0; }
+            33% { border-color: #f00; box-shadow: 0 0 30px #f00; }
+            66% { border-color: #0ff; box-shadow: 0 0 30px #0ff; }
         }
 
         .info-text {
             color: #0f0;
             font-size: 1em;
             text-align: center;
-            text-shadow: 0 0 5px #0f0;
+            text-shadow: 0 0 10px #0f0, 0 0 20px #f00;
             font-family: monospace;
+            animation: textAttack 0.2s infinite;
+        }
+
+        @keyframes textAttack {
+            0%, 100% { color: #0f0; }
+            33% { color: #f00; }
+            66% { color: #0ff; }
         }
 
         .button-container {
@@ -272,22 +373,35 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: rgba(0, 0, 0, 0.95);
-            border: 3px solid #f00;
+            border: 5px solid #f00;
             padding: 30px;
-            font-size: 2em;
+            font-size: 2.5em;
             color: #f00;
             text-align: center;
             z-index: 10;
             display: none;
-            animation: shake 0.5s infinite;
-            box-shadow: 0 0 50px #f00;
+            animation: shake 0.05s infinite, warningFlash 0.1s infinite;
+            box-shadow: 0 0 50px #f00, 0 0 100px #f00;
             font-family: monospace;
         }
 
+        @keyframes warningFlash {
+            0%, 100% { background: rgba(0, 0, 0, 0.95); color: #f00; }
+            50% { background: rgba(255, 0, 0, 0.3); color: #fff; }
+        }
+
         @keyframes shake {
-            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-            25% { transform: translate(-48%, -50%) rotate(2deg); }
-            75% { transform: translate(-52%, -50%) rotate(-2deg); }
+            0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+            10% { transform: translate(-48%, -48%) rotate(2deg) scale(1.05); }
+            20% { transform: translate(-52%, -52%) rotate(-2deg) scale(0.95); }
+            30% { transform: translate(-48%, -52%) rotate(2deg) scale(1.05); }
+            40% { transform: translate(-52%, -48%) rotate(-2deg) scale(0.95); }
+            50% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+            60% { transform: translate(-48%, -48%) rotate(2deg) scale(1.05); }
+            70% { transform: translate(-52%, -52%) rotate(-2deg) scale(0.95); }
+            80% { transform: translate(-48%, -52%) rotate(2deg) scale(1.05); }
+            90% { transform: translate(-52%, -48%) rotate(-2deg) scale(0.95); }
+            100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
         }
 
         .scanline {
@@ -295,11 +409,11 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 3px;
-            background: rgba(0, 255, 0, 0.8);
-            box-shadow: 0 0 10px #0f0;
+            height: 5px;
+            background: rgba(0, 255, 0, 1);
+            box-shadow: 0 0 20px #0f0, 0 0 40px #0f0;
             z-index: 7;
-            animation: scan 4s linear infinite;
+            animation: scan 1s linear infinite, scanFlash 0.1s infinite;
         }
 
         @keyframes scan {
@@ -307,18 +421,31 @@
             100% { top: 100%; }
         }
 
+        @keyframes scanFlash {
+            0%, 100% { opacity: 1; background: rgba(0, 255, 0, 1); }
+            50% { opacity: 0.5; background: rgba(255, 0, 0, 1); }
+        }
+
         .corner-brackets {
             position: fixed;
             width: 100px;
             height: 100px;
-            border: 2px solid #0f0;
+            border: 3px solid #0f0;
             z-index: 8;
-            animation: bracketPulse 2s infinite;
+            animation: bracketPulse 0.2s infinite, bracketSpin 2s infinite linear;
         }
 
         @keyframes bracketPulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+            0% { opacity: 1; border-color: #0f0; box-shadow: 0 0 20px #0f0; }
+            25% { opacity: 0.8; border-color: #f00; box-shadow: 0 0 20px #f00; }
+            50% { opacity: 1; border-color: #0ff; box-shadow: 0 0 20px #0ff; }
+            75% { opacity: 0.8; border-color: #ff0; box-shadow: 0 0 20px #ff0; }
+            100% { opacity: 1; border-color: #0f0; box-shadow: 0 0 20px #0f0; }
+        }
+
+        @keyframes bracketSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
@@ -451,7 +578,7 @@
             document.getElementById('quotes').appendChild(quote);
             setTimeout(() => quote.remove(), 7000);
         }
-        setInterval(createQuote, 1500);
+        setInterval(createQuote, 500);
 
         // Sparkle effect on mouse move
         document.addEventListener('mousemove', (e) => {
@@ -528,16 +655,23 @@
         setInterval(() => {
             const warning = document.getElementById('warning');
             warning.style.display = 'block';
-            setTimeout(() => warning.style.display = 'none', 2000);
-        }, 15000);
+            setTimeout(() => warning.style.display = 'none', 1000);
+        }, 5000);
 
-        // Random chaos effects
+        // Extreme sparkle attack
         setInterval(() => {
-            if (Math.random() > 0.95) {
-                document.body.style.transform = `rotate(${Math.random() * 4 - 2}deg)`;
-                setTimeout(() => document.body.style.transform = '', 200);
+            for (let i = 0; i < 5; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkles';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1000);
             }
-        }, 1000);
+        }, 100);
+
+
 
 
 
